@@ -16,7 +16,7 @@ const { ethers, JsonRpcProvider, parseEther } = require('ethers');
 
   const paymentAmount = parseEther('0.6295'); // ether amount you wanna buy
   const merkleProof = []; 
-  const allocation = 0; 
+  // const allocation = 0; 
   const code = "degenclan"; 
 
   const privateKey = process.env.PK; 
@@ -26,10 +26,10 @@ const { ethers, JsonRpcProvider, parseEther } = require('ethers');
   const contract = new ethers.Contract(contractAddress.tier1, contractABI, wallet);
 
   // Call the whitelistedPurchaseWithCode function
-  const tx = await contract.whitelistedPurchaseWithCode(paymentAmount, merkleProof, allocation, code);
+  const tx = await contract.whitelistedPurchaseWithCode(paymentAmount, merkleProof, paymentAmount, code);
   console.log('Transaction sent:', tx.hash);
 
   // Wait for the transaction to be execute
   const receipt = await tx.wait();
-  console.log('Transaction Info:', receipt.transactionHash);
+  console.log('Transaction receipt:', receipt);
 })()
