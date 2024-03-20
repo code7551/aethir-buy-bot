@@ -51,5 +51,5 @@ const { ethers, JsonRpcProvider, parseEther } = require('ethers');
 
   // Wait for the transaction to be execute
   const receipt = await tx.wait();
-  console.log('Transaction Info:', receipt);
+  console.log('Transaction receipt:', receipt);
 })()
